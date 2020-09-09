@@ -239,7 +239,7 @@ public:
     }
 
 //TODO:
-#if 0
+#if 1
     // This function returns the address on the stack of the fist argument
     // that is not passed by register
     // By default it assumes to be called after the prologue
@@ -260,6 +260,11 @@ public:
         int first_params_and_return_addr_size = 8;
 #endif
         return x0 + saved_regs_size + first_params_and_return_addr_size;
+    }
+#else
+    inline const Xbyak::RegExp get_stack_params_address()
+    {
+        return Xbyak::RegExp(0);
     }
 #endif
 
